@@ -11,8 +11,8 @@ steps:
   inputs:
     versionSpec: '>= 2.5'
 
-- task: CacheBeta@0
-  inputs: $(Pipeline.Workspace)/.bundle
+- task: CacheBeta@1
+  inputs:
     key: gems | $(Agent.OS) | my.gemspec
     path: $(Pipeline.Workspace)/.bundle
   displayName: Cache gems
