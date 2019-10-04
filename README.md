@@ -1,3 +1,4 @@
+[![Build Status](https://buildcanary.visualstudio.com/CacheSandbox/_apis/build/status/fadnavistanmay.pipelines-ruby?branchName=master)](https://buildcanary.visualstudio.com/CacheSandbox/_build/latest?definitionId=3450&branchName=master)
 
 # Contributing
 
