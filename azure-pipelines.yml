@@ -13,7 +13,7 @@ steps:
 
 - task: CacheBeta@1
   inputs:
-    key: gems | $(Agent.OS) | my.gemspec
+    key: gems | $(Agent.OS) | pipelines-ruby.gemspec
     path: $(Pipeline.Workspace)/.bundle
   displayName: Cache gems
 
