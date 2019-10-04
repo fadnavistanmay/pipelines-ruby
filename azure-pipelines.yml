@@ -23,6 +23,7 @@ steps:
     bundle install --retry=3 --jobs=4
   displayName: 'bundle install'
 
+- script: bundle info
 - script: ls -l $(Pipeline.Workspace)
 
 - script: bundle exec rake
