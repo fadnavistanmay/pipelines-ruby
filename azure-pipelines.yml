@@ -14,7 +14,7 @@ steps:
 - task: CacheBeta@0
   inputs: $(Pipeline.Workspace)/.bundle
     key: gems | $(Agent.OS) | my.gemspec
-    path: 
+    path: $(Pipeline.Workspace)/.bundle
   displayName: Cache gems
 
 - script: bundle install
