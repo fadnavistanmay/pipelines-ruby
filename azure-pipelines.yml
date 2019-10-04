@@ -24,7 +24,7 @@ steps:
   displayName: 'bundle install'
 
 - script: gem list
-- script: ls -l $(Pipeline.Workspace)
+- script: ls -l $(Pipeline.Workspace)/s
 
 - script: bundle exec rake
   displayName: 'bundle exec rake'
