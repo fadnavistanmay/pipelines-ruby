@@ -17,10 +17,10 @@ steps:
     path: $(Pipeline.Workspace)/.bundle
   displayName: Cache gems
 
-- script: bundle install
+- script: bundle install vendor/bundle
 - script: |
     gem install bundler
-    bundle install --retry=3 --jobs=4
+    bundle install vendor/bundle --retry=3 --jobs=4
   displayName: 'bundle install'
 
 - script: gem list
