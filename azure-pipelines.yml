@@ -10,7 +10,16 @@ steps:
 - task: UseRubyVersion@0
   inputs:
     versionSpec: '>= 2.5'
+variables:
+  BUNDLE_PATH: $(Pipeline.Workspace)/.bundle
 
+- task: CacheBeta@0
+  inputs: $(Pipeline.Workspace)/.bundle
+    key: gems | $(Agent.OS) | my.gemspec
+    path: 
+  displayName: Cache gems
+
+- script: bundle install
 - script: |
     gem install bundler
     bundle install --retry=3 --jobs=4
