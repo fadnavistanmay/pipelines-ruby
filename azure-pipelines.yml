@@ -7,7 +7,7 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 variables:
-  BUNDLE_PATH :($Pipeline.Workspace)/.bundle
+  BUNDLE_PATH : $(Pipeline.Workspace)/.bundle
 
 steps:
 - task: UseRubyVersion@0
