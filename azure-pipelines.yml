@@ -6,6 +6,9 @@
 pool:
   vmImage: 'Ubuntu 16.04'
 
+variables:
+  BUNDLE_PATH :($Pipeline.Workspace)/.bundle
+
 steps:
 - task: UseRubyVersion@0
   inputs:
@@ -18,15 +21,17 @@ steps:
     cacheHitVar: CACHE_RESTORED
   displayName: Cache gems
 
-#- script: bundle install --path vendor/bundle
-- script: |
-    gem install bundler
-    bundle install --path vendor/bundle --retry=3 --jobs=4
-  displayName: 'bundle install'
+- script: bundle install
+  displayName : "bundle install"
   condition: ne(variables.CACHE_RESTORED, 'true')
+#- script: |
+#    gem install bundler
+#    bundle install --retry=3 --jobs=4
+#  displayName: 'bundle install'
+#  condition: ne(variables.CACHE_RESTORED, 'true')
 
-- script: gem list
-- script: ls -l $(Pipeline.Workspace)/s/vendor
+#- script: gem list
+#- script: ls -l $(Pipeline.Workspace)/s/vendor
 
 - script: bundle exec rake
   displayName: 'bundle exec rake'
