@@ -16,7 +16,7 @@ steps:
 
 - task: CacheBeta@1
   inputs:
-    key: gems | $(Agent.OS) | pipelines-ruby.gemspec
+    key: gems2 | $(Agent.OS) | pipelines-ruby.gemspec
     path: BUNDLE_PATH
     cacheHitVar: CACHE_RESTORED
   displayName: Cache gems
