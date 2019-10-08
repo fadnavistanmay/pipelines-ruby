@@ -16,19 +16,20 @@ steps:
 
 - task: CacheBeta@1
   inputs:
-    key: gems2 | $(Agent.OS) | pipelines-ruby.gemspec
+    key: gems4 | $(Agent.OS) | pipelines-ruby.gemspec
     path: BUNDLE_PATH
     cacheHitVar: CACHE_RESTORED
   displayName: Cache gems
 
-- script: bundle install
-  displayName : "bundle install"
-  condition: ne(variables.CACHE_RESTORED, 'true')
-#- script: |
-#    gem install bundler
-#    bundle install --retry=3 --jobs=4
-#  displayName: 'bundle install'
+#- script: bundle install
+#  displayName : "bundle install"
 #  condition: ne(variables.CACHE_RESTORED, 'true')
+
+- script: |
+    gem install bundler
+    bundle install --retry=3 --jobs=4
+  displayName: 'bundle install'
+  condition: ne(variables.CACHE_RESTORED, 'true')
 
 #- script: gem list
 #- script: ls -l $(Pipeline.Workspace)/s/vendor
