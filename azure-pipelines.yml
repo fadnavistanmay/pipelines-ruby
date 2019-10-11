@@ -20,7 +20,7 @@ stages:
 
 variables:
   BUNDLE_PATH : $(Pipeline.Workspace)/.bundle
-  CACHE_KEY: gems | $(Agent.OS) | $(Build.BuildId) | pipeline-ruby.gemspec
+  CACHE_KEY: gems | $(Agent.OS) | $(Build.BuildId) | pipelines-ruby.gemspec
 
 #steps:
 #- task: UseRubyVersion@0
