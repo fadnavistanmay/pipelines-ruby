@@ -3,8 +3,20 @@
 # Add steps that install rails, analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/ruby
 
-pool:
-  vmImage: 'Ubuntu 16.04'
+#pool:
+#  vmImage: 'Ubuntu 16.04'
+
+stages:
+- stage: firstrun
+  displayName: 'Empty cache'
+  jobs:
+  - template: azure-pipelines-jobs.yml
+
+- stage: secondrun
+  dependsOn: firstrun
+  displayName: 'Cached'
+  jobs:
+  - template: azure-pipelines-jobs.yml
 
 variables:
   BUNDLE_PATH : $(Pipeline.Workspace)/.bundle
