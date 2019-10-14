@@ -19,7 +19,7 @@ stages:
   - template: azure-pipelines-jobs.yml
 
 variables:
-  #BUNDLE_PATH : $(Pipeline.Workspace)/.bundle
+  BUNDLE_PATH : $(Pipeline.Workspace)/.bundle
   CACHE_KEY: gems | $(Agent.OS) | $(Build.BuildId) | pipelines-ruby.gemspec
 
 #steps:
