@@ -6,7 +6,7 @@ steps:
 - task: CacheBeta@1
   inputs:
     key: $(CACHE_KEY)
-    path: $(BUNDLE_PATH)
+    path: $(Pipeline.Workspace)
     cacheHitVar: CACHE_RESTORED
   displayName: Cache gems
 
