@@ -12,15 +12,33 @@ stages:
   jobs:
   - template: azure-pipelines-jobs.yml
 
+- stage: firstruntar
+  displayName: 'Empty Cache Tar'
+  variables:
+    AZP_CACHING_TAR: 'true'
+    CACHE_PACK: tar
+  jobs:
+  - template: azure-pipelines-jobs.yml
+
 - stage: secondrun
   dependsOn: firstrun
   displayName: 'Cached'
   jobs:
   - template: azure-pipelines-jobs.yml
 
+- stage: secondruntar
+  dependsOn: firstruntar
+  displayName: 'Cached tar'
+  variables:
+    AZP_CACHING_TAR: 'true'
+    CACHE_PACK: tar
+  jobs:
+  - template: azure-pipelines-jobs.yml
+
 variables:
   BUNDLE_PATH : $(Pipeline.Workspace)/.bundle
-  CACHE_KEY: gems | $(Agent.OS) | $(Build.BuildId) | pipelines-ruby.gemspec
+  CACHE_KEY: gems | $(Agent.OS) | $(Build.BuildId) | $(CACHE_PACK) | pipelines-ruby.gemspec
+  system.debug: true
 
 #steps:
 #- task: UseRubyVersion@0
