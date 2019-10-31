@@ -16,7 +16,7 @@ steps:
 
 - script: |
     gem install bundler
-    gem install rspec_junit_formatter -v x64-mingw32
+    gem install 'rspec_junit_formatter'
     bundle install --retry=3 --jobs=4
   displayName: 'bundle install'
   condition: ne(variables.CACHE_RESTORED, 'true')
