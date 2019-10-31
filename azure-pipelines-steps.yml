@@ -20,7 +20,7 @@ steps:
   displayName: 'bundle install'
   condition: ne(variables.CACHE_RESTORED, 'true')
 
-- script: gem install rspec_junit_formatter -v x64-mingw32
+- script: gem install rspec_junit_formatter -v 'x64-mingw32'
 
 - script: gem list
 
