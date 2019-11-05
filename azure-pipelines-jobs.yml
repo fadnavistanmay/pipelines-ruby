@@ -6,10 +6,10 @@ jobs:
         VM_IMAGE: ubuntu-16.04
       linux 18:
         VM_IMAGE: ubuntu-18.04
-      windows 2017:
-        VM_IMAGE: vs2017-win2016
-      windows 2019:
-       VM_IMAGE: windows-2019
+      #windows 2017:
+      #  VM_IMAGE: vs2017-win2016
+      #windows 2019:
+      # VM_IMAGE: windows-2019
       macos 10.13:
         VM_IMAGE: macos-10.13
       macos 10.14:

@@ -7,31 +7,35 @@
 #  vmImage: 'Ubuntu 16.04'
 
 stages:
-- stage: firstrun
-  displayName: 'Empty cache'
-  jobs:
-  - template: azure-pipelines-jobs.yml
-
 - stage: firstruntar
-  displayName: 'Empty Cache Tar'
+  displayName: 'Empty cache Tar'
   variables:
-    AZP_CACHING_TAR: 'true'
     CACHE_PACK: tar
   jobs:
   - template: azure-pipelines-jobs.yml
 
-- stage: secondrun
-  dependsOn: firstrun
-  displayName: 'Cached'
+- stage: firstrunfiles
+  displayName: 'Empty Cache Files'
+  variables:
+    AZP_CACHING_CONTENT_FORMAT: Files
+    CACHE_PACK: files
   jobs:
   - template: azure-pipelines-jobs.yml
 
 - stage: secondruntar
   dependsOn: firstruntar
-  displayName: 'Cached tar'
+  displayName: 'Cached TAR'
   variables:
-    AZP_CACHING_TAR: 'true'
     CACHE_PACK: tar
+  jobs:
+  - template: azure-pipelines-jobs.yml
+
+- stage: secondrunfiles
+  dependsOn: firstrunfiles
+  displayName: 'Cached Files'
+  variables:
+    AZP_CACHING_CONTENT_FORMAT: Files
+    CACHE_PACK: files
   jobs:
   - template: azure-pipelines-jobs.yml
 
