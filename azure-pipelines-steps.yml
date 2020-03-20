@@ -19,6 +19,9 @@ steps:
 #- script: bundle install
 #  displayName : "bundle install"
 #  condition: ne(variables.CACHE_RESTORED, 'true')
+- script: |
+    gem install bundler:1.16.4
+  displayName: 'Install bundler'
 
 - script: |
     gem install bundler
